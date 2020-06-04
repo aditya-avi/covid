@@ -10,20 +10,20 @@ class App extends Component {
  render() {
         return (
             <BrowserRouter>
-                <Route exact path='/'>
+                <Route exact path='/covid'>
                     <Main />
                 </Route>
-                   <Route path='/Distric'>
+                   <Route path='/covid/Distric'>
                     <Distric/>
                 </Route>
-                <Route path='/Api'>
+                <Route path='/covid/Api'>
                     <Api/>
                 </Route>
 
-                <Route path='/News'>
+                <Route path='/covid/News'>
                     <News/>
                 </Route>
-                <Route path='/Reso'>
+                <Route path='/covid/Reso'>
                     <Reso/>
                 </Route>
             </BrowserRouter>
