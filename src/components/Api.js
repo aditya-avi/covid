@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
+import Card from './Card';
+import '../../src/components/Style.css'
+import logo from '../img/img.png'
+import {Link} from 'react-router-dom';
 
 class Api extends Component {
 
     state = {
-        error: null,
+        error: '',
         products: [],
         opt: ''
     }
@@ -30,24 +34,53 @@ class Api extends Component {
     render() {
 
         const {error, products, opt} = this.state;
+        console.log(error);
 
         var prnt = products.map((s, i) => {
             return (s.state)
         })
 
-        const statewise = products[this.state.opt]
+        const statewise = products[opt]
+
         if (statewise) {
-            console.log("active : " + statewise.active + " recovered : " + statewise.recovered + " confirmed : " + statewise.confirmed + " death : " + statewise.deaths)
+            // console.log("active : " + statewise.active+"\n" + " recovered : " +
+            // statewise.recovered+"\n" + " confirmed : " + statewise.confirmed +"\n"+ "
+            // death : " + statewise.deaths)
         }
         return (
             <div className="">
-                 {products ? <div className="">
-                    <select name="" id="" onChange={this.change}>
-                        {prnt.map((s, i) => <option key={i} value={i}>
-                            {s}
-                        </option>)}
-                    </select>
-                </div>:<h1>avinash</h1>}
+                <div className="col">
+                    <img src={logo} alt="" className="center-block my-5"/>
+                </div>
+                <div className="">
+                    <div className="text-center">
+                        <select
+                            name=""
+                            defaultValue={0}
+                            id=""
+                            onChange={this.change}
+                            className="col my-5"
+                            style={{
+                            border: "none",
+                            borderBottom: "3px solid black",
+                            width: "260px"
+                        }}>
+                            {prnt.map((s, i) => <option key={i} value={i}>
+                                {s}
+                            </option>)}
+                        </select>
+                    </div>
+                    <Card info ={products[opt]}/>
+                    <div className='row justify-content-center'>
+                    <h1 className='text-center text-capitalize'>get District Wise corona update:</h1>
+                    
+                    <button className='btn btn-outline ml-3'>
+                        <Link to='/' className='text-dark'>Click Here</Link>
+                    </button>
+                </div>
+
+                </div>
+                {/* {products ? <h1>{products[opt].active}</h1>:<h1>avinash</h1>} */}
             </div>
 
         )
